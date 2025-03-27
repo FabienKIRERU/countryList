@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Country;
+
 
 class CountrySeeder extends Seeder
 {
@@ -14,7 +16,7 @@ class CountrySeeder extends Seeder
     public function run(): void
     {
         // All countries
-        $country= [
+        $countries = [
             'AF' => [
                 'name' => 'Afghanistan',
                 'phone' => 93,
@@ -2766,7 +2768,13 @@ class CountrySeeder extends Seeder
                 'currency_name' => 'Zimbabwean dollar'
             ]
         ];
-        
-        DB::table('countries')->insert($country);
+        foreach ($countries as $code => $country) {
+            Country::updateOrCreate(
+                [
+                    'code' => $code,
+                ],
+                $country,
+            );
+        }
     }
 }

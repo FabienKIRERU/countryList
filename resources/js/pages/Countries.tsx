@@ -3,6 +3,7 @@ import { usePage } from "@inertiajs/react";
 
 interface Country {
     id: number;
+    code: string;
     flag: string;
     alpha_3: string;
     phone: string;
@@ -29,7 +30,7 @@ export default function Countries() {
                     <ul className="list-disc pl-6">
                         {countryList.map((country) => (
                             <li key={country.id}>
-                                {country.flag} {country.alpha_3} {country.phone} {country.name} <br />
+                                <img src={"flags/"+country.code+".svg"} alt="flag" className="size-8" /> {country.flag} {country.alpha_3} {country.phone} {country.name} <br />
                                 Capital: {country.capital} | {country.currency_name} ({country.currency_code}) {country.currency_symbol}
                             </li>
                         ))}
