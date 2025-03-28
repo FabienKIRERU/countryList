@@ -26,12 +26,16 @@ export default function Countries() {
             <h1 className="text-2xl font-bold mb-4">List of countries by Continent:</h1>
             {Object.entries(countries).map(([continent, countryList]) => (
                 <div key={continent} className="mb-6">
-                    <h2 className="text-xl font-semibold">{continent}</h2>
-                    <ul className="list-disc pl-6">
+                    <h2 className="text-xl font-semibold mb-2">{continent}</h2>
+                    <ul className="list-none pl-0 m-2">
                         {countryList.map((country) => (
-                            <li key={country.id}>
-                                <img src={"flags/"+country.code+".svg"} alt="flag" className="size-8" /> {country.flag} {country.alpha_3} {country.phone} {country.name} <br />
-                                Capital: {country.capital} | {country.currency_name} ({country.currency_code}) {country.currency_symbol}
+                            <li key={country.id} className="flex items-center gap-2 mb-2">
+                                <img src={"flags/" + country.code + ".svg"} alt="flag" className="w-8 h-8" />
+                                <span>{country.name} ({country.alpha_3})</span>
+                                <span className="ml-2 text-gray-600">+{country.phone}</span>
+                                <div className="ml-4 text-sm text-gray-500">
+                                    Capital: {country.capital} | {country.currency_name} ({country.currency_code}) {country.currency_symbol}
+                                </div>
                             </li>
                         ))}
                     </ul>

@@ -32,4 +32,8 @@ class CountryRepository implements BaseRepositoryInterface
     {
         return Country::destroy($id);
     }
+
+    public function getAfricanCountries(){
+        return Country::where('continent', 'Africa')->get();
+    }
 }
