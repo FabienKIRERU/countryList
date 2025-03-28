@@ -10,6 +10,7 @@ use App\Http\Controllers\CountryController;
 
 Route::get('/', [CountryController::class, 'index']);
 
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('dashboard');
